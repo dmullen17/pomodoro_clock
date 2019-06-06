@@ -1,26 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isActive: false,
+            time: 1500, 
+            breakTime: 300
+        };
+    }
+    render() {
+        return (
+        <div>
+            <Container className="App" fluid={true}>
+                <Row className='row1'>
+                    <Col className='clock'>
+                        <Row className='timer'>
+                            25:00
+                        </Row>
+                    </Col>
+                </Row>
+                <Row className='row2'>
+                    <ControllerColumn name='Interval' time='25:00'/>
+                    <ControllerColumn name='Break Time' time='5:00'/>
+                </Row>
+            </Container>
+        </div>
   );
+    }
 }
+
+const ControllerColumn = (props) => {
+    return (
+        <Col className='controllerColumn'>
+            <Row>{props.name}</Row>
+            <Row>Up arrow</Row>
+            <Row>{props.time}</Row>
+            <Row>Down Arrow</Row>
+        </Col>
+    )
+}
+
+// need a seconds to mm::ss function
 
 export default App;
