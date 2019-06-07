@@ -54,14 +54,14 @@ class App extends React.Component {
             <Container className="App" fluid={true}>
                 <Row className='row1'>
                     <Col className='clock'>
-                        <Row className='timer'>
+                        <Row className='timer' id='time-left'>
                             {this.timeToMMSS()}
                         </Row>
                     </Col>
                 </Row>
                 <Row className='row2'>
-                    <ControllerColumn name='Interval' time='25:00'/>
-                    <ControllerColumn name='Break Time' time='5:00'/>
+                    <TimerControl name='Session Length' nameId='session-label' time='25:00'/>
+                    <TimerControl name='Break Length' nameId='break-label' time='5:00'/>
                 </Row>
             <div onClick={this.startTimer}>Start</div>
             <div onClick={this.reset}>Reset</div>
@@ -71,10 +71,10 @@ class App extends React.Component {
 }
 }
 
-const ControllerColumn = (props) => {
+const TimerControl = (props) => {
     return (
-        <Col className='controllerColumn'>
-            <Row>{props.name}</Row>
+        <Col className='TimerControl'>
+            <Row id={props.nameId}>{props.name}</Row>
             <Row>Up arrow</Row>
             <Row>{props.time}</Row>
             <Row>Down Arrow</Row>
