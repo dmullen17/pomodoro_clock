@@ -24,7 +24,7 @@
     
 }
 .clock {
-    margin-top: 15vh;
+    margin-top: 5vh;
     height: 22vw;
     width: 22vw;
     border-radius: 50%;
@@ -40,6 +40,23 @@
 
 .controllerColumn {
     font-size: 2vw;
+}
+
+.circularButton {
+    height: 4vw;
+    width: 4vw;
+    border: .25vw solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    font-size: 1.25vw;
+}
+
+.timerControl * {
+    font-size: 2.5vh;
+    padding: 2.5px;
 }
 
 @keyframes App-logo-spin {
