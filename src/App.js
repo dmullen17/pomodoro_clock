@@ -11,7 +11,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isActive: true,
+            isActive: false,
             time: 1500,
             session: 25, 
             break: 5,
@@ -38,21 +38,23 @@ class App extends React.Component {
         minutes = minutes < 10 ? '0' + minutes : minutes;
         return minutes + ':' + seconds;
     }
-    updateTimerControls(value) {
-        
-    }
     reset() {
         this.setState({
-            isActive: true,
+            isActive: false,
             time: 1500,
             session: 25, 
             break: 5,
             interval: ''
         });
+        this.state.interval && this.state.interval.cancel();
     }
     startTimer() {
+        if (this.state.isActive) return;
         this.setState({
-            interval: accurateInterval(this.decrementTime, 1000)
+            isActive: true,
+            interval: accurateInterval(() => {
+                this.decrementTime();
+            }, 1000)
         });
     }
     toggleActive() {
